@@ -1,0 +1,4 @@
+.eslintrc.json
+.travis.yml
+Gruntfile.js
+tests/**
