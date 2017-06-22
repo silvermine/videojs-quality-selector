@@ -1,0 +1,28 @@
+.vjs-quality-selector {
+   .vjs-menu-button {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+   }
+   .vjs-icon-placeholder {
+      // From video.js font: https://github.com/videojs/font
+      font-family: 'VideoJS';
+      font-weight: normal;
+      font-style: normal;
+      &:before {
+         content: '\f110';
+      }
+   }
+}
+
+.vjs-quality-changing {
+   .vjs-big-play-button {
+      display: none;
+   }
+   .vjs-control-bar {
+      display: flex;
+      visibility: visible;
+      opacity: 1;
+   }
+}
