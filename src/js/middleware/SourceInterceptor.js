@@ -58,7 +58,7 @@ module.exports = function(videojs) {
             // Update the quality selector with the new source
             qualitySelector = player.controlBar.getChild('qualitySelector');
             if (qualitySelector) {
-               qualitySelector.update();
+               qualitySelector.setSelectedSource(selectedSource);
             }
 
             // Pass along selected source
