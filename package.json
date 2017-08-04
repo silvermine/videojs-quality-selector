@@ -47,5 +47,8 @@
     "silvermine-serverless-utils": "git+https://github.com/silvermine/serverless-utils.git#910f1149af824fc8d0fa840878079c7d3df0f414",
     "sinon": "2.3.5",
     "underscore": "1.8.3"
+  },
+  "peerDependencies": {
+    "video.js": "6.x"
   }
 }
