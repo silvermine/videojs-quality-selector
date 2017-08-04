@@ -1,9 +1,9 @@
 # Silvermine VideoJS Quality/Resolution Selector
 
-[![Build Status](https://travis-ci.org/silvermine/videojs-quality-selector.png?branch=master)](https://travis-ci.org/silvermine/videojs-quality-selector)
+[![Build Status](https://travis-ci.org/silvermine/videojs-quality-selector.svg?branch=master)](https://travis-ci.org/silvermine/videojs-quality-selector)
 [![Coverage Status](https://coveralls.io/repos/github/silvermine/videojs-quality-selector/badge.svg?branch=master)](https://coveralls.io/github/silvermine/videojs-quality-selector?branch=master)
-[![Dependency Status](https://david-dm.org/silvermine/videojs-quality-selector.png)](https://david-dm.org/silvermine/videojs-quality-selector)
-[![Dev Dependency Status](https://david-dm.org/silvermine/videojs-quality-selector/dev-status.png)](https://david-dm.org/silvermine/videojs-quality-selector#info=devDependencies&view=table)
+[![Dependency Status](https://david-dm.org/silvermine/videojs-quality-selector.svg)](https://david-dm.org/silvermine/videojs-quality-selector)
+[![Dev Dependency Status](https://david-dm.org/silvermine/videojs-quality-selector/dev-status.svg)](https://david-dm.org/silvermine/videojs-quality-selector?type=dev)
 
 
 ## What is it?
