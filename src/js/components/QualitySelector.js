@@ -23,8 +23,6 @@ module.exports = function(videojs) {
       constructor: function(player, options) {
          MenuButton.call(this, player, options);
 
-         this.selectedSource = options.selectedSource || player.currentSource();
-
          player.on(events.QUALITY_SELECTED, function(event, source) {
             this.setSelectedSource(source);
          }.bind(this));
@@ -32,6 +30,7 @@ module.exports = function(videojs) {
          // Since it's possible for the player to get a source before the selector is
          // created, make sure to update once we get a "ready" signal.
          player.one('ready', function() {
+            this.selectedSrc = player.src();
             this.update();
          }.bind(this));
       },
@@ -42,7 +41,7 @@ module.exports = function(videojs) {
        * @param source {object} player source to display as selected
        */
       setSelectedSource: function(source) {
-         this.selectedSource = source;
+         this.selectedSrc = source ? source.src : undefined;
          this.update();
       },
 
@@ -60,7 +59,7 @@ module.exports = function(videojs) {
          return _.map(sources, function(source) {
             return new QualityOption(player, {
                source: source,
-               selected: this.selectedSource ? source.src === this.selectedSource.src : false,
+               selected: source.src === this.selectedSrc,
             });
          }.bind(this));
       },
