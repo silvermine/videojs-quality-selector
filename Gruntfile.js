@@ -143,6 +143,7 @@ module.exports = function(grunt) {
    grunt.registerTask('build-js', [ 'browserify', 'uglify' ]);
    grunt.registerTask('build-css', [ 'sass', 'postcss' ]);
    grunt.registerTask('build', [ 'build-js', 'build-css' ]);
+   grunt.registerTask('develop', [ 'build', 'watch' ]);
    grunt.registerTask('default', [ 'standards' ]);
 
 };
