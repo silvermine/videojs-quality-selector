@@ -17,13 +17,11 @@ module.exports = function(videojs) {
          player.addClass(QUALITY_CHANGE_CLASS);
 
          // Find and set the new selected source
-         // Note: See `setSource` for the reason behind using both 'isDefault'
-         // and 'isdefault'
-         sources = _.map(sources, _.partial(_.omit, _, [ 'isDefault', 'isdefault' ]));
+         sources = _.map(sources, _.partial(_.omit, _, 'selected'));
          selectedSource = _.findWhere(sources, { src: newSource.src });
          // Note: `_.findWhere` returns a reference to an object. Thus the
          // following updates the original object in `sources`.
-         selectedSource.isDefault = true;
+         selectedSource.selected = true;
 
          player.src(sources);
 
@@ -38,31 +36,34 @@ module.exports = function(videojs) {
 
       return {
 
-         setSource: function(autoSelectedSource, next) {
+         setSource: function(playerSelectedSource, next) {
             var sources = player.currentSources(),
-                defaultSource, selectedSource,
+                userSelectedSource, chosenSource,
                 qualitySelector;
 
-            defaultSource = _.find(sources, function(source) {
-               // While the simplest check would be `!!source.isDefault`, remember that
-               // the sources can come from a `<source>` tag. Therefore, the lowercase
-               // form, `isdefault`, needs to be checked.
-               return source.isDefault === true
-                  || source.isDefault === 'true'
-                  || source.isdefault === true
-                  || source.isdefault === 'true';
+            // There are generally two source options, the one that videojs
+            // auto-selects and the one that a "user" of this plugin has
+            // supplied via the `selected` property. `selected` can come from
+            // either the `<source>` tag or the list of sources passed to
+            // videojs using `src()`.
+
+            userSelectedSource = _.find(sources, function(source) {
+               // Must check for both boolean and string 'true' as sources set
+               // programmatically should use a boolean, but those coming from
+               // a `<source>` tag will use a string.
+               return source.selected === true || source.selected === 'true';
             });
 
-            selectedSource = defaultSource || autoSelectedSource;
+            chosenSource = userSelectedSource || playerSelectedSource;
 
             // Update the quality selector with the new source
             qualitySelector = player.controlBar.getChild('qualitySelector');
             if (qualitySelector) {
-               qualitySelector.setSelectedSource(selectedSource);
+               qualitySelector.setSelectedSource(chosenSource);
             }
 
-            // Pass along selected source
-            next(null, selectedSource);
+            // Pass along the chosen source
+            next(null, chosenSource);
          },
 
       };
