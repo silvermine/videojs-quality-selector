@@ -1,38 +1,10 @@
 'use strict';
 
-var _ = require('underscore'),
-    events = require('../events'),
-    QUALITY_CHANGE_CLASS = 'vjs-quality-changing';
+var _ = require('underscore');
 
 module.exports = function(videojs) {
 
    videojs.use('*', function(player) {
-
-      player.on(events.QUALITY_SELECTED, function(event, newSource) {
-         var sources = player.currentSources(),
-             currentTime = player.currentTime(),
-             isPaused = player.paused(),
-             selectedSource;
-
-         player.addClass(QUALITY_CHANGE_CLASS);
-
-         // Find and set the new selected source
-         sources = _.map(sources, _.partial(_.omit, _, 'selected'));
-         selectedSource = _.findWhere(sources, { src: newSource.src });
-         // Note: `_.findWhere` returns a reference to an object. Thus the
-         // following updates the original object in `sources`.
-         selectedSource.selected = true;
-
-         player.src(sources);
-
-         player.one('loadeddata', function() {
-            player.removeClass(QUALITY_CHANGE_CLASS);
-            player.currentTime(currentTime);
-            if (!isPaused) {
-               player.play();
-            }
-         });
-      });
 
       return {
 
