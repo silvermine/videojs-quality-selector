@@ -2,7 +2,8 @@
 
 var _ = require('underscore'),
     events = require('../events'),
-    qualityOptionFactory = require('./QualityOption');
+    qualityOptionFactory = require('./QualityOption'),
+    QUALITY_CHANGE_CLASS = 'vjs-quality-changing';
 
 module.exports = function(videojs) {
    var MenuButton = videojs.getComponent('MenuButton'),
@@ -23,8 +24,14 @@ module.exports = function(videojs) {
       constructor: function(player, options) {
          MenuButton.call(this, player, options);
 
-         player.on(events.QUALITY_SELECTED, function(event, source) {
-            this.setSelectedSource(source);
+         // Update interface instantly so the user's change is acknowledged
+         player.on(events.QUALITY_SELECTED, function(event, newSource) {
+            this.setSelectedSource(newSource);
+            player.addClass(QUALITY_CHANGE_CLASS);
+
+            player.one('loadeddata', function() {
+               player.removeClass(QUALITY_CHANGE_CLASS);
+            });
          }.bind(this));
 
          // Since it's possible for the player to get a source before the selector is
