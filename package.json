@@ -1,6 +1,6 @@
 {
   "name": "silvermine-videojs-quality-selector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "video.js plugin for selecting a video quality or resolution",
   "main": "src/js/index.js",
   "scripts": {
