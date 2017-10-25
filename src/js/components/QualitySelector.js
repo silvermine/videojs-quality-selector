@@ -40,6 +40,8 @@ module.exports = function(videojs) {
             this.selectedSrc = player.src();
             this.update();
          }.bind(this));
+
+         this.controlText('Open quality selector menu');
       },
 
       /**
