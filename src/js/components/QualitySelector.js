@@ -54,18 +54,35 @@ module.exports = function(videojs) {
          this.update();
       },
 
+      orderSources: function(a, b) {
+         if (a.res && b.res) {
+            return parseFloat(a.res) - parseFloat(b.res);
+         }
+         return;
+      },
+
       /**
        * @inheritdoc
        */
       createItems: function() {
          var player = this.player(),
-             sources = player.currentSources();
+             sources = player.currentSources(),
+             singleTypeSources,
+             orderedSources;
 
-         if (!sources || sources.length < 2) {
+         /* filter sources by the current type on the player */
+         singleTypeSources = sources.filter(function(item) {
+            return item.type === player.currentType();
+         });
+
+         /* sort sources by res attributed if exist */
+         orderedSources = singleTypeSources.sort(this.orderSources);
+
+         if (!orderedSources || orderedSources.length < 2) {
             return [];
          }
 
-         return _.map(sources, function(source) {
+         return _.map(orderedSources, function(source) {
             return new QualityOption(player, {
                source: source,
                selected: source.src === this.selectedSrc,
