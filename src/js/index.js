@@ -19,7 +19,11 @@ module.exports = function(videojs) {
              isPaused = player.paused(),
              selectedSource;
 
-         sources = _.map(sources, _.partial(_.omit, _, 'selected'));
+         // Clear out any previously selected sources (see: #11)
+         _.each(sources, function(source) {
+            source.selected = false;
+         });
+
          selectedSource = _.findWhere(sources, { src: newSource.src });
          // Note: `_.findWhere` returns a reference to an object. Thus the
          // following updates the original object in `sources`.
