@@ -13,7 +13,7 @@ module.exports = function(videojs) {
 
    videojs.hook('setup', function(player) {
       // Add handler to switch sources when the user requests a change
-      player.on(events.QUALITY_SELECTED, function(event, newSource) {
+      player.on(events.QUALITY_REQUESTED, function(event, newSource) {
          var sources = player.currentSources(),
              currentTime = player.currentTime(),
              isPaused = player.paused(),
