@@ -13,8 +13,8 @@ depending on the specific reason they were using it, they may not need to make a
 all.
 
 If you were relying on the `QUALITY_SELECTED` event, it's possible that you will now need
-to release on the `QUALITY_REQUESTED` event instead, depending on why you were listening
-to the event. See a682125 for details.
+to rely on the `QUALITY_REQUESTED` event instead, depending on why you were listening to
+the event. See a682125 for details.
 
    * Support quality selector buttons anywhere in the player's component hierarchy (a682125 Fixes #13)
 
