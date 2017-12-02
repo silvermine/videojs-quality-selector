@@ -25,13 +25,18 @@ module.exports = function(videojs) {
          MenuButton.call(this, player, options);
 
          // Update interface instantly so the user's change is acknowledged
-         player.on(events.QUALITY_SELECTED, function(event, newSource) {
+         player.on(events.QUALITY_REQUESTED, function(event, newSource) {
             this.setSelectedSource(newSource);
             player.addClass(QUALITY_CHANGE_CLASS);
 
             player.one('loadeddata', function() {
                player.removeClass(QUALITY_CHANGE_CLASS);
             });
+         }.bind(this));
+
+         player.on(events.QUALITY_SELECTED, function(event, newSource) {
+            // Update the selected source with the source that was actually selected
+            this.setSelectedSource(newSource);
          }.bind(this));
 
          // Since it's possible for the player to get a source before the selector is
@@ -50,8 +55,12 @@ module.exports = function(videojs) {
        * @param source {object} player source to display as selected
        */
       setSelectedSource: function(source) {
-         this.selectedSrc = source ? source.src : undefined;
-         this.update();
+         var src = (source ? source.src : undefined);
+
+         if (this.selectedSrc !== src) {
+            this.selectedSrc = src;
+            this.update();
+         }
       },
 
       /**

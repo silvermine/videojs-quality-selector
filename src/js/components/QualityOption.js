@@ -39,7 +39,7 @@ module.exports = function(videojs) {
        */
       handleClick: function(event) {
          MenuItem.prototype.handleClick.call(this, event);
-         this.player().trigger(events.QUALITY_SELECTED, this.source);
+         this.player().trigger(events.QUALITY_REQUESTED, this.source);
       },
 
    });

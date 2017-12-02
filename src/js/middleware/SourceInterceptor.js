@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('underscore');
+var _ = require('underscore'),
+    events = require('../events');
 
 module.exports = function(videojs) {
 
@@ -10,8 +11,7 @@ module.exports = function(videojs) {
 
          setSource: function(playerSelectedSource, next) {
             var sources = player.currentSources(),
-                userSelectedSource, chosenSource,
-                qualitySelector;
+                userSelectedSource, chosenSource;
 
             // There are generally two source options, the one that videojs
             // auto-selects and the one that a "user" of this plugin has
@@ -28,11 +28,7 @@ module.exports = function(videojs) {
 
             chosenSource = userSelectedSource || playerSelectedSource;
 
-            // Update the quality selector with the new source
-            qualitySelector = player.controlBar.getChild('qualitySelector');
-            if (qualitySelector) {
-               qualitySelector.setSelectedSource(chosenSource);
-            }
+            player.trigger(events.QUALITY_SELECTED, chosenSource);
 
             // Pass along the chosen source
             next(null, chosenSource);
