@@ -13,6 +13,10 @@ module.exports = function(videojs) {
             var sources = player.currentSources(),
                 userSelectedSource, chosenSource;
 
+            if (player._qualitySelectorSafeSeek) {
+               player._qualitySelectorSafeSeek.onPlayerSourcesChange();
+            }
+
             // There are generally two source options, the one that videojs
             // auto-selects and the one that a "user" of this plugin has
             // supplied via the `selected` property. `selected` can come from
