@@ -3,6 +3,12 @@
 In general, this project adheres to [Semantic Versioning](http://semver.org/). If for some
 reason we do something that's not strictly semantic, it will be clearly called out below.
 
+## 1.1.2
+
+   * Fixed a bug where selecting a quality menu item while a video was playing did not resume
+   playback after the source changed. Affected Safari and players whose `preload` attribute
+   was `none` (8feeafb Fixes #16).
+
 ## 1.1.1
 
    * Reference underscore as a dependency since we depend on it (931d8a4 See #12)
