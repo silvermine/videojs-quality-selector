@@ -32,6 +32,8 @@ module.exports = function(videojs) {
             player.one('loadeddata', function() {
                player.removeClass(QUALITY_CHANGE_CLASS);
             });
+
+            this.hideQualitySelectorOptions();
          }.bind(this));
 
          player.on(events.QUALITY_SELECTED, function(event, newSource) {
@@ -61,6 +63,15 @@ module.exports = function(videojs) {
             this.selectedSrc = src;
             this.update();
          }
+      },
+
+      /**
+       * Hides the quality selector options
+       * Applies fix for non-iOS devices where this does not happen automatically
+       */
+      hideQualitySelectorOptions: function() {
+         this.unpressButton();
+         this.player().removeClass('vjs-workinghover');
       },
 
       /**
