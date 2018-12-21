@@ -26,6 +26,7 @@
   "homepage": "https://github.com/silvermine/videojs-quality-selector#readme",
   "devDependencies": {
     "@silvermine/eslint-config": "1.5.0",
+    "@silvermine/sass-lint-config": "1.1.0",
     "autoprefixer": "7.1.1",
     "coveralls": "3.0.2",
     "eslint": "4.0.0",
@@ -42,7 +43,6 @@
     "mocha": "5.2.0",
     "mocha-lcov-reporter": "1.3.0",
     "rewire": "2.5.2",
-    "sass-lint-config-silvermine": "1.0.1",
     "silvermine-serverless-utils": "git+https://github.com/silvermine/serverless-utils.git#910f1149af824fc8d0fa840878079c7d3df0f414",
     "sinon": "2.3.5"
   },
