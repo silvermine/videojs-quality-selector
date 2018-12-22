@@ -1,10 +1,13 @@
 language: node_js
-# 4.3.2 is what AWS Lambda currently uses
 node_js:
-  - "5"
-  - "4.3.2"
+   - "node" # Latest node version
+   - "lts/*" # Latest LTS version
+   - "10"
+   - "8"
+   - "8.10"
+   - "6"
 
-before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+before_install: if [[ `npm -v` != 6* ]]; then npm i -g npm@6.4.1; fi
 
 script:
    - grunt standards
