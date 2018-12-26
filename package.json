@@ -47,7 +47,7 @@
     "sinon": "2.3.5"
   },
   "peerDependencies": {
-    "video.js": "6.x"
+    "video.js": ">= 6.0.0"
   },
   "dependencies": {
     "class.extend": "0.9.2",
