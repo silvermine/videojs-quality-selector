@@ -8,6 +8,8 @@
 var path = require('path'),
     getCodeVersion = require('silvermine-serverless-utils/src/get-code-version');
 
+const sass = require('node-sass');
+
 module.exports = function(grunt) {
 
    var DEBUG = !!grunt.option('debug'),
@@ -70,6 +72,7 @@ module.exports = function(grunt) {
 
       sass: {
          options: {
+            implementation: sass,
             sourceMap: DEBUG,
             indentWidth: 3,
             outputStyle: DEBUG ? 'expanded' : 'compressed',
