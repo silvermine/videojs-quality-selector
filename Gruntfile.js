@@ -28,12 +28,13 @@ module.exports = function(grunt) {
 
       dist: {
          base: path.join(__dirname, 'dist'),
+         jsFileName: 'silvermine-videojs-quality-selector',
       },
    };
 
    config.dist.js = {
-      bundle: path.join(config.dist.base, 'js', '<%= pkg.name %>.js'),
-      minified: path.join(config.dist.base, 'js', '<%= pkg.name %>.min.js'),
+      bundle: path.join(config.dist.base, 'js', '<%= config.dist.jsFileName %>.js'),
+      minified: path.join(config.dist.base, 'js', '<%= config.dist.jsFileName %>.min.js'),
    };
 
    config.dist.css = {
