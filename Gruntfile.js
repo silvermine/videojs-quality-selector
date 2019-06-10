@@ -105,6 +105,10 @@ module.exports = function(grunt) {
          },
       },
 
+      clean: {
+         dist: config.dist.base,
+      },
+
       eslint: {
          target: config.js.all,
       },
@@ -140,6 +144,7 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-browserify');
    grunt.loadNpmTasks('grunt-eslint');
    grunt.loadNpmTasks('grunt-postcss');
+   grunt.loadNpmTasks('grunt-contrib-clean');
    grunt.loadNpmTasks('grunt-sass');
    grunt.loadNpmTasks('grunt-sass-lint');
 
