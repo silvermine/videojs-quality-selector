@@ -28,12 +28,13 @@ module.exports = function(grunt) {
 
       dist: {
          base: path.join(__dirname, 'dist'),
+         jsFileName: 'silvermine-videojs-quality-selector',
       },
    };
 
    config.dist.js = {
-      bundle: path.join(config.dist.base, 'js', '<%= pkg.name %>.js'),
-      minified: path.join(config.dist.base, 'js', '<%= pkg.name %>.min.js'),
+      bundle: path.join(config.dist.base, 'js', '<%= config.dist.jsFileName %>.js'),
+      minified: path.join(config.dist.base, 'js', '<%= config.dist.jsFileName %>.min.js'),
    };
 
    config.dist.css = {
@@ -104,6 +105,10 @@ module.exports = function(grunt) {
          },
       },
 
+      clean: {
+         dist: config.dist.base,
+      },
+
       eslint: {
          target: config.js.all,
       },
@@ -139,6 +144,7 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-browserify');
    grunt.loadNpmTasks('grunt-eslint');
    grunt.loadNpmTasks('grunt-postcss');
+   grunt.loadNpmTasks('grunt-contrib-clean');
    grunt.loadNpmTasks('grunt-sass');
    grunt.loadNpmTasks('grunt-sass-lint');
 
