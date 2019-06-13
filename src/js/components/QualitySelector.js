@@ -60,9 +60,7 @@ module.exports = function(videojs) {
          if (this.selectedSrc !== src) {
             this.selectedSrc = src;
             _.each(this.items, function(item) {
-               if (item.source.src !== src) {
-                  item.selected(item.source.src === src);
-               }
+               item.selected(item.source.src === src);
             });
          }
       },
