@@ -41,6 +41,7 @@ There is an example of this in
 ##### From [`unpkg`](https://unpkg.com/silvermine-videojs-quality-selector/):
 
 ```js
+<link href="https://unpkg.com/silvermine-videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
 <script src="./path/to/video.min.js"></script>
 <script src="https://unpkg.com/silvermine-videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
 ```
