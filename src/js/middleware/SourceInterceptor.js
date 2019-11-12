@@ -24,10 +24,10 @@ module.exports = function(videojs) {
             // videojs using `src()`.
 
             userSelectedSource = _.find(sources, function(source) {
-               // Must check for both boolean and string 'true' as sources set
-               // programmatically should use a boolean, but those coming from
-               // a `<source>` tag will use a string.
-               return source.selected === true || source.selected === 'true';
+               // Must check for boolean values as well as either the string 'true' or
+               // 'selected'. When sources are set programmatically, the value will be a
+               // boolean, but those coming from a `<source>` tag will be a string.
+               return source.selected === true || source.selected === 'true' || source.selected === 'selected';
             });
 
             chosenSource = userSelectedSource || playerSelectedSource;
