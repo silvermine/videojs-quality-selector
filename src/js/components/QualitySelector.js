@@ -34,6 +34,11 @@ module.exports = function(videojs) {
             });
          }.bind(this));
 
+         // Update the list of menu items only when the list of sources change
+         player.on(events.PLAYER_SOURCES_CHANGED, function() {
+            this.update();
+         }.bind(this));
+
          player.on(events.QUALITY_SELECTED, function(event, newSource) {
             // Update the selected source with the source that was actually selected
             this.setSelectedSource(newSource);
