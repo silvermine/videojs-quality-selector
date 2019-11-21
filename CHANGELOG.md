@@ -3,6 +3,35 @@
 In general, this project adheres to [Semantic Versioning](http://semver.org/). If for some
 reason we do something that's not strictly semantic, it will be clearly called out below.
 
+## 1.2.3
+
+   * Downgraded the `class.extend` dependency to 0.9.1. Version 0.9.2 introduces a call to
+     `new Function(someString)`, which [violates the Content Security Policy that blocks
+     `eval` and `eval`-like function
+     calls.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src#Unsafe_eval_expressions)
+     (f9ca724 Fixes #36)
+   * Fixed a bug where the quality selection menu did not render when sources were set
+     sometime after the player was initially created and became ready (a3753dd Fixes #47).
+   * Support 'selected' as a value for the `selected` attribute on `source` tags (8702f4f
+     Fixes #39)
+
+## 1.2.2
+
+   * Fixed a bug introduced in `1.2.0` where the quality selector menu did not show the
+     selected source as selected when it first rendered
+
+## 1.2.1
+
+   * Fixed a bug introduced in 31a305d where the path to the built JS file in the `dist`
+     folder changed unintentionally
+   * Fixed a bug that prevented the quality selector menu from fading out smoothly in
+     Video.js 7.
+   * Included Video.js 7 in peer dependency range (21900e8 Fixes #26)
+
+## 1.2.0
+
+   * Migrated NPM package to use `@silvermine` scope
+
 ## 1.1.2
 
    * Fixed a bug where selecting a quality menu item while a video was playing did not resume
