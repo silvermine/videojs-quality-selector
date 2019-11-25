@@ -38,12 +38,12 @@ There is an example of this in
 <script src="./path/to/silvermine-videojs-quality-selector.min.js"></script>
 ```
 
-##### From [`unpkg`](https://unpkg.com/silvermine-videojs-quality-selector/):
+##### From [`unpkg`](https://unpkg.com/@silvermine/videojs-quality-selector/):
 
 ```js
-<link href="https://unpkg.com/silvermine-videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
+<link href="https://unpkg.com/@silvermine/videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
 <script src="./path/to/video.min.js"></script>
-<script src="https://unpkg.com/silvermine-videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
+<script src="https://unpkg.com/@silvermine/videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
 ```
 
 #### Using `require`
@@ -51,7 +51,7 @@ There is an example of this in
 When using NPM/Browserify, first install the plugin.
 
 ```
-npm install --save silvermine-videojs-quality-selector
+npm install --save @silvermine/videojs-quality-selector
 ```
 
 For `videojs` to use the plug-in, the plugin needs to register itself with the instance of
@@ -61,7 +61,7 @@ For `videojs` to use the plug-in, the plugin needs to register itself with the i
 var videojs = require('videojs');
 
 // The following registers the plugin with `videojs`
-require('silvermine-videojs-quality-selector')(videojs);
+require('@silvermine/videojs-quality-selector')(videojs);
 ```
 
 ### Providing video sources
