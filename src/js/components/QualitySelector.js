@@ -5,8 +5,9 @@ var _ = require('underscore'),
     qualityOptionFactory = require('./QualityOption'),
     QUALITY_CHANGE_CLASS = 'vjs-quality-changing';
 
-module.exports = function(videojs) {
-   var MenuButton = videojs.getComponent('MenuButton'),
+module.exports = function(videojs, userOpts) {
+   var userOptions = _.defaults(_.extend({}, userOpts), { showQualitySelectionLabelInControlBar: false }),
+       MenuButton = videojs.getComponent('MenuButton'),
        QualityOption = qualityOptionFactory(videojs),
        QualitySelector;
 
@@ -22,6 +23,8 @@ module.exports = function(videojs) {
        * @inheritdoc
        */
       constructor: function(player, options) {
+         var qualitySelectMenuButton = this.children_[0].controlTextEl_.previousSibling;
+
          MenuButton.call(this, player, options);
 
          // Update interface instantly so the user's change is acknowledged
@@ -42,6 +45,15 @@ module.exports = function(videojs) {
          player.on(events.QUALITY_SELECTED, function(event, newSource) {
             // Update the selected source with the source that was actually selected
             this.setSelectedSource(newSource);
+
+            // Check for quality select label flag
+            if (userOptions.showQualitySelectionLabelInControlBar !== false) {
+               qualitySelectMenuButton.innerHTML = newSource.label;
+            } else if (qualitySelectMenuButton.className.indexOf('vjs-quality-selector-icon') === -1) {
+               // Add class to show gear icon.  Blank out innerHTML for safety precations.
+               qualitySelectMenuButton.className += ' vjs-quality-selector-icon';
+               qualitySelectMenuButton.innerHTML = '';
+            }
          }.bind(this));
 
          // Since it's possible for the player to get a source before the selector is

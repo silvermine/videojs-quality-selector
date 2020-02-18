@@ -6,10 +6,10 @@ var _ = require('underscore'),
     sourceInterceptorFactory = require('./middleware/SourceInterceptor'),
     SafeSeek = require('./util/SafeSeek');
 
-module.exports = function(videojs) {
+module.exports = function(videojs, userOpts) {
    videojs = videojs || window.videojs;
 
-   qualitySelectorFactory(videojs);
+   qualitySelectorFactory(videojs, userOpts);
    sourceInterceptorFactory(videojs);
 
    videojs.hook('setup', function(player) {

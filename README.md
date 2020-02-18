@@ -64,6 +64,35 @@ var videojs = require('videojs');
 require('@silvermine/videojs-quality-selector')(videojs);
 ```
 
+### Initialization options
+
+* **`showQualitySelectionLabelInControlBar`** (default: `false`) - Enabling this flag will swap the selector
+icon with the label of the currently selected source.
+
+#### Providing initialization options via `require()`
+
+If requiring this plugin via NPM, any desired initialization options can be supplied to
+the constructor function exported by the module. For example:
+
+```js
+require('@silvermine/videojs-quality-selector')(videojs, { showQualitySelectionLabelInControlBar: true });
+```
+
+#### Providing initialization options via `<script>`
+
+If using the prebuilt JS, the initialization options can be provided via
+`window.SILVERMINE_VIDEOJS_QUALITY_SELECTOR_CONFIG`. Note that these options need to be set
+before the `<script>` tag to include the plugin.
+
+```html
+<script>
+   window.SILVERMINE_VIDEOJS_QUALITY_SELECTOR_CONFIG = {
+      showQualitySelectionLabelInControlBar: true,
+   };
+</script>
+<script src="path/to/silvermine-videojs-quality-selector.js"></script>
+```
+
 ### Providing video sources
 
 Sources can be provided with either the `<source>` tag or via the `src` function on the
