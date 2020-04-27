@@ -16,6 +16,7 @@ module.exports = function(videojs) {
       function changeQuality(event, newSource) {
          var sources = player.currentSources(),
              currentTime = player.currentTime(),
+             currentPlaybackRate = player.playbackRate(),
              isPaused = player.paused(),
              selectedSource;
 
@@ -49,6 +50,7 @@ module.exports = function(videojs) {
                // player's `src` is updated but the player's `currentTime` has not yet
                // been set by the SafeSeek operation.
                player._qualitySelectorSafeSeek = new SafeSeek(player, currentTime);
+               player.playbackRate(currentPlaybackRate);
             }
 
             if (!isPaused) {
