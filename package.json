@@ -5,7 +5,8 @@
   "main": "src/js/index.js",
   "scripts": {
     "prepare": "grunt build",
-    "test": "check-node-version --npm 6.13.4 && ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec 'tests/**/*.test.js'"
+    "test": "check-node-version --npm 6.13.4 && ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec 'tests/**/*.test.js'",
+    "commitlint": "commitlint --from ad805e8"
   },
   "author": "Jeremy Thomerson",
   "license": "MIT",
@@ -25,6 +26,8 @@
   },
   "homepage": "https://github.com/silvermine/videojs-quality-selector#readme",
   "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/travis-cli": "8.3.5",
     "@silvermine/eslint-config": "3.0.0-rc.0",
     "@silvermine/sass-lint-config": "1.1.0",
     "autoprefixer": "9.5.1",

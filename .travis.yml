@@ -9,6 +9,7 @@ node_js:
 before_install: if [[ `npm -v` != 6* ]]; then npm i -g npm@6.13.4; fi
 
 script:
+   - npm run commitlint
    - grunt standards
    - npm test
 
