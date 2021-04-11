@@ -64,6 +64,12 @@ var videojs = require('videojs');
 require('@silvermine/videojs-quality-selector')(videojs);
 ```
 
+Remember to also add the CSS to your build. With most bundlers you can:
+
+```js
+require('@silvermine/videojs-quality-selector/dist/css/quality-selector.css')
+```
+
 ### Providing video sources
 
 Sources can be provided with either the `<source>` tag or via the `src` function on the
