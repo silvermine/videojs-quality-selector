@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-   extends: [ '@silvermine/eslint-config/commitlint.js' ],
+   extends: [ '@silvermine/standardization/commitlint.js' ],
 };

@@ -113,11 +113,11 @@ module.exports = function(grunt) {
          target: config.js.all,
       },
 
-      sasslint: {
+      stylelint: {
          options: {
-            configFile: path.join(__dirname, 'node_modules', '@silvermine/sass-lint-config', 'sass-lint.yml'),
+            configFile: path.join(__dirname, 'node_modules', '@silvermine', 'standardization', '.stylelintrc.yml'),
          },
-         target: config.sass.all,
+         src: config.sass.all,
       },
 
       watch: {
@@ -146,9 +146,9 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-postcss');
    grunt.loadNpmTasks('grunt-contrib-clean');
    grunt.loadNpmTasks('grunt-sass');
-   grunt.loadNpmTasks('grunt-sass-lint');
+   grunt.loadNpmTasks('grunt-stylelint');
 
-   grunt.registerTask('standards', [ 'eslint', 'sasslint' ]);
+   grunt.registerTask('standards', [ 'eslint', 'stylelint' ]);
    grunt.registerTask('build-js', [ 'browserify', 'uglify' ]);
    grunt.registerTask('build-css', [ 'sass', 'postcss' ]);
    grunt.registerTask('build', [ 'build-js', 'build-css' ]);
