@@ -28,7 +28,7 @@
   "devDependencies": {
     "@silvermine/eslint-config": "3.0.1",
     "@silvermine/standardization": "1.1.0",
-    "autoprefixer": "9.5.1",
+    "autoprefixer": "8.6.5",
     "check-node-version": "4.0.3",
     "coveralls": "3.0.3",
     "eslint": "6.8.0",
