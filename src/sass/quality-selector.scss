@@ -7,10 +7,11 @@
    }
    .vjs-icon-placeholder {
       // From video.js font: https://github.com/videojs/font
+      /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
       font-family: 'VideoJS';
       font-weight: normal;
       font-style: normal;
-      &:before {
+      &::before {
          content: '\f110';
       }
    }
