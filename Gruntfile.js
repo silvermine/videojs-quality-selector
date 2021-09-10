@@ -6,7 +6,8 @@
 'use strict';
 
 var path = require('path'),
-    getCodeVersion = require('silvermine-serverless-utils/src/get-code-version');
+    getCodeVersion = require('silvermine-serverless-utils/src/get-code-version'),
+    markdownlint = require('markdownlint');
 
 const sass = require('node-sass');
 
@@ -137,6 +138,17 @@ module.exports = function(grunt) {
          },
       },
 
+      markdownlint: {
+         all: {
+            // Adjust `src` depending on how many files need to be linted:
+            src: [ 'README.md' ],
+            options: {
+               // eslint-disable-next-line no-sync
+               config: markdownlint.readConfigSync('.markdownlint.json'),
+            },
+         },
+      },
+
    });
 
    grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -147,8 +159,9 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-clean');
    grunt.loadNpmTasks('grunt-sass');
    grunt.loadNpmTasks('grunt-stylelint');
+   grunt.loadNpmTasks('grunt-markdownlint');
 
-   grunt.registerTask('standards', [ 'eslint', 'stylelint' ]);
+   grunt.registerTask('standards', [ 'eslint', 'stylelint', 'markdownlint' ]);
    grunt.registerTask('build-js', [ 'browserify', 'uglify' ]);
    grunt.registerTask('build-css', [ 'sass', 'postcss' ]);
    grunt.registerTask('build', [ 'build-js', 'build-css' ]);

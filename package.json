@@ -27,7 +27,7 @@
   "homepage": "https://github.com/silvermine/videojs-quality-selector#readme",
   "devDependencies": {
     "@silvermine/eslint-config": "3.0.1",
-    "@silvermine/standardization": "1.1.0",
+    "@silvermine/standardization": "1.2.0",
     "autoprefixer": "8.6.5",
     "check-node-version": "4.0.3",
     "coveralls": "3.0.3",
