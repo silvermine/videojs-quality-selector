@@ -31,14 +31,14 @@ for `videojs` at `window.videojs`).
 There is an example of this in
 [`docs/demo/index.html`](./docs/demo/index.html).
 
-##### From local file:
+##### From local file
 
 ```js
 <script src="./path/to/video.min.js"></script>
 <script src="./path/to/silvermine-videojs-quality-selector.min.js"></script>
 ```
 
-##### From [`unpkg`](https://unpkg.com/@silvermine/videojs-quality-selector/):
+##### From [`unpkg`](https://unpkg.com/@silvermine/videojs-quality-selector/)
 
 ```js
 <link href="https://unpkg.com/@silvermine/videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
@@ -50,7 +50,7 @@ There is an example of this in
 
 When using NPM/Browserify, first install the plugin.
 
-```
+```bash
 npm install --save @silvermine/videojs-quality-selector
 ```
 
@@ -113,13 +113,13 @@ player.src([
 There are at least two ways to add the quality selector control to the player's control
 bar. The first is directly adding it via `addChild`. For example:
 
-```
+```js
 player.controlBar.addChild('QualitySelector');
 ```
 
 The second option is to add the control via the player's options, for instance:
 
-```
+```js
 var options, player;
 
 options = {
