@@ -9,7 +9,7 @@ var path = require('path'),
     getCodeVersion = require('silvermine-serverless-utils/src/get-code-version'),
     markdownlint = require('markdownlint');
 
-const sass = require('node-sass');
+const sass = require('sass');
 
 module.exports = function(grunt) {
 
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       },
 
       sass: {
-         base: path.join(__dirname, 'src', 'sass'),
+         base: path.join(__dirname, 'src', 'scss'),
          all: [ 'src/**/*.scss' ],
       },
 
