@@ -78,7 +78,7 @@ instance of a `video.js` player.
 #### Using `<source>`
 
 ```html
-<video id="video_1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="268" data-setup='{}'>
+<video id="video_1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="268">
    <source src="https://example.com/video_720.mp4" type="video/mp4" label="720P">
    <source src="https://example.com/video_480.mp4" type="video/mp4" label="480P" selected="true">
    <source src="https://example.com/video_360.mp4" type="video/mp4" label="360P">
@@ -114,7 +114,11 @@ There are at least two ways to add the quality selector control to the player's 
 bar. The first is directly adding it via `addChild`. For example:
 
 ```js
-player.controlBar.addChild('QualitySelector');
+videojs('video_1', {}, function() {
+   var player = this;
+
+   player.controlBar.addChild('QualitySelector');
+});
 ```
 
 The second option is to add the control via the player's options, for instance:

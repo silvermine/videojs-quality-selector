@@ -11,7 +11,7 @@
 <body>
    <h1>Demo of <code>videojs-quality-selector</code></h1>
 
-   <video id="video_1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{}'>
+   <video id="video_1" class="video-js vjs-default-skin" controls preload="auto">
       <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.720p.webm" type="video/webm" label="720P">
       <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.480p.webm" type="video/webm" label="480P" selected="true">
       <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.360p.webm" type="video/webm" label="360P">
@@ -19,7 +19,7 @@
    </video>
 
    <script>
-      videojs("video_1", {}, function() {
+      videojs('video_1', {}, function() {
          var player = this;
 
          player.controlBar.addChild('QualitySelector');
