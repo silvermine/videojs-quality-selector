@@ -6,7 +6,13 @@
   "scripts": {
     "prepare": "grunt build",
     "test": "check-node-version --npm 6.14.12 && nyc mocha -- 'tests/**/*.test.js'",
-    "commitlint": "commitlint --from ad805e8"
+    "commitlint": "commitlint --from ad805e8",
+    "markdownlint": "markdownlint -c .markdownlint.json -i CHANGELOG.md '{,!(node_modules)/**/}*.md'",
+    "eslint": "eslint '{,!(node_modules|dist)/**/}*.js'",
+    "standards": "npm run markdownlint && npm run eslint",
+    "release:preview": "node ./node_modules/@silvermine/standardization/scripts/release.js preview",
+    "release:prep-changelog": "node ./node_modules/@silvermine/standardization/scripts/release.js prep-changelog",
+    "release:finalize": "node ./node_modules/@silvermine/standardization/scripts/release.js finalize"
   },
   "author": "Jeremy Thomerson",
   "license": "MIT",
@@ -27,9 +33,8 @@
   "homepage": "https://github.com/silvermine/videojs-quality-selector#readme",
   "devDependencies": {
     "@silvermine/eslint-config": "3.0.1",
-    "@silvermine/standardization": "1.2.0",
+    "@silvermine/standardization": "2.0.0",
     "autoprefixer": "8.6.5",
-    "check-node-version": "4.0.3",
     "coveralls": "3.0.3",
     "eslint": "6.8.0",
     "expect.js": "0.3.1",
@@ -38,7 +43,6 @@
     "grunt-contrib-clean": "2.0.0",
     "grunt-contrib-uglify": "4.0.1",
     "grunt-contrib-watch": "1.1.0",
-    "grunt-eslint": "22.0.0",
     "grunt-postcss": "0.9.0",
     "grunt-sass": "3.0.2",
     "mocha": "8.4.0",
