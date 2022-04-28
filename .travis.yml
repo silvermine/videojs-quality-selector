@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-   - "node" # Latest node version
+   # TODO: Re-enable when Travis CI fixes image dependency problems
+   # See: https://github.com/silvermine/standardization/issues/39
+   # - "node" # Latest node version
    - "lts/*" # Latest LTS version
    - "14"
    - "12"
