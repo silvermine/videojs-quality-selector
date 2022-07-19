@@ -1,5 +1,3 @@
-'use strict';
-
 var _ = require('underscore'),
     events = require('../events'),
     qualityOptionFactory = require('./QualityOption'),

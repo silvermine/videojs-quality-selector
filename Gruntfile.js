@@ -2,9 +2,6 @@
  * Copyright (c) 2017 Jeremy Thomerson
  * Licensed under the MIT license.
  */
-
-'use strict';
-
 var path = require('path'),
     getCodeVersion = require('silvermine-serverless-utils/src/get-code-version');
 
@@ -52,6 +49,26 @@ module.exports = function(grunt) {
          main: {
             src: config.js.standalone,
             dest: config.dist.js.bundle,
+            options: {
+               transform: [
+                  [
+                     'babelify',
+                     {
+                        presets: [
+                           [
+                              '@babel/preset-env',
+                              {
+                                 debug: true,
+                                 useBuiltIns: 'usage',
+                                 shippedProposals: true,
+                                 corejs: 3,
+                              },
+                           ],
+                        ],
+                     },
+                  ],
+               ],
+            },
          },
       },
 
