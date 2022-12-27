@@ -1,17 +1,13 @@
-'use strict';
-
-var Class = require('class.extend');
-
-module.exports = Class.extend({
-   init: function(player, seekToTime) {
+class SafeSeek {
+   constructor(player, seekToTime) {
       this._player = player;
       this._seekToTime = seekToTime;
       this._hasFinished = false;
       this._keepThisInstanceWhenPlayerSourcesChange = false;
       this._seekWhenSafe();
-   },
+   }
 
-   _seekWhenSafe: function() {
+   _seekWhenSafe() {
       var HAVE_FUTURE_DATA = 3;
 
       // `readyState` in Video.js is the same as the HTML5 Media element's `readyState`
@@ -35,9 +31,9 @@ module.exports = Class.extend({
       } else {
          this._seek();
       }
-   },
+   }
 
-   onPlayerSourcesChange: function() {
+   onPlayerSourcesChange() {
       if (this._keepThisInstanceWhenPlayerSourcesChange) {
          // By setting this to `false`, we know that if the player sources change again
          // the change did not originate from a quality selection change, the new sources
@@ -47,9 +43,9 @@ module.exports = Class.extend({
       } else {
          this.cancel();
       }
-   },
+   }
 
-   onQualitySelectionChange: function() {
+   onQualitySelectionChange() {
       // `onPlayerSourcesChange` will cancel this pending seek unless we tell it not to.
       // We need to reuse this same pending seek instance because when the player is
       // paused, the `preload` attribute is set to `none`, and the user selects one
@@ -60,21 +56,23 @@ module.exports = Class.extend({
       if (!this.hasFinished()) {
          this._keepThisInstanceWhenPlayerSourcesChange = true;
       }
-   },
+   }
 
-   _seek: function() {
+   _seek() {
       this._player.currentTime(this._seekToTime);
       this._keepThisInstanceWhenPlayerSourcesChange = false;
       this._hasFinished = true;
-   },
+   }
 
-   hasFinished: function() {
+   hasFinished() {
       return this._hasFinished;
-   },
+   }
 
-   cancel: function() {
+   cancel() {
       this._player.off('canplay', this._seekFn);
       this._keepThisInstanceWhenPlayerSourcesChange = false;
       this._hasFinished = true;
-   },
-});
+   }
+}
+
+module.exports = SafeSeek;
