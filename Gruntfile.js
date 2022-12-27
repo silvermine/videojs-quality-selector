@@ -10,7 +10,17 @@ const sass = require('sass');
 module.exports = function(grunt) {
 
    var DEBUG = !!grunt.option('debug'),
-       config;
+       pkgJSON = grunt.file.readJSON('package.json'),
+       config, versionInfo;
+
+   try {
+      versionInfo = getCodeVersion.both();
+   } catch(e) {
+      // When this package is installed as a git URL, getCodeVersion throws an error and
+      // is not able to find the git version for this package. So, we fall back to using
+      // the version number from package.json
+      versionInfo = pkgJSON.version;
+   }
 
    config = {
       js: {
@@ -41,8 +51,8 @@ module.exports = function(grunt) {
 
    grunt.initConfig({
 
-      pkg: grunt.file.readJSON('package.json'),
-      versionInfo: getCodeVersion.both(),
+      pkg: pkgJSON,
+      versionInfo: versionInfo,
       config: config,
 
       browserify: {
