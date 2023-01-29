@@ -10,12 +10,12 @@ module.exports = function(videojs) {
     * @class QualityOption
     * @extends videojs.MenuItem
     */
-   return videojs.extend(MenuItem, {
+   return class QualityOption extends MenuItem {
 
       /**
        * @inheritdoc
        */
-      constructor: function(player, options) {
+      constructor(player, options) {
          var source = options.source;
 
          if (!_.isObject(source)) {
@@ -27,18 +27,17 @@ module.exports = function(videojs) {
             label: source.label,
          }, options);
 
-         MenuItem.call(this, player, options);
+         super(player, options);
 
          this.source = source;
-      },
+      }
 
       /**
        * @inheritdoc
        */
-      handleClick: function(event) {
-         MenuItem.prototype.handleClick.call(this, event);
+      handleClick(event) {
+         super.handleClick(event);
          this.player().trigger(events.QUALITY_REQUESTED, this.source);
-      },
-
-   });
+      }
+   };
 };
