@@ -19,7 +19,7 @@ module.exports = function(videojs) {
        * @inheritdoc
        */
       constructor(player, options) {
-         MenuButton.call(this, player, options);
+         super(player, options);
 
          // Update interface instantly so the user's change is acknowledged
          player.on(events.QUALITY_REQUESTED, function(event, newSource) {

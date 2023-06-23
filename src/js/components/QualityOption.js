@@ -10,14 +10,13 @@ module.exports = function(videojs) {
     * @class QualityOption
     * @extends videojs.MenuItem
     */
-   class QualityOption extends MenuItem {
+   return class QualityOption extends MenuItem {
 
       /**
        * @inheritdoc
        */
       constructor(player, options) {
          var source = options.source;
-
          if (!_.isObject(source)) {
             throw new Error('was not provided a "source" object, but rather: ' + (typeof source));
          }
@@ -26,8 +25,7 @@ module.exports = function(videojs) {
             selectable: true,
             label: source.label,
          }, options);
-
-         MenuItem.call(this, player, options);
+         super(player, options);
 
          this.source = source;
       }
