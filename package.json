@@ -40,8 +40,8 @@
     "@silvermine/eslint-config": "3.0.1",
     "@silvermine/standardization": "2.0.0",
     "autoprefixer": "8.6.5",
-    "babelify": "10.0.0",
     "babel-eslint": "10.1.0",
+    "babelify": "10.0.0",
     "check-node-version": "4.0.3",
     "core-js": "3.11.0",
     "coveralls": "3.0.3",
@@ -64,7 +64,8 @@
     "rewire": "4.0.1",
     "sass": "1.49.7",
     "silvermine-serverless-utils": "git+https://github.com/silvermine/serverless-utils.git#910f1149af824fc8d0fa840878079c7d3df0f414",
-    "sinon": "7.3.2"
+    "sinon": "7.3.2",
+    "stylelint": "13.8.0"
   },
   "peerDependencies": {
     "video.js": ">=6.0.0"

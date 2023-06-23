@@ -5,8 +5,7 @@ var _ = require('underscore'),
 
 module.exports = function(videojs) {
    var MenuButton = videojs.getComponent('MenuButton'),
-       QualityOption = qualityOptionFactory(videojs),
-       QualitySelector;
+       QualityOption = qualityOptionFactory(videojs);
 
    /**
     * A component for changing video resolutions
@@ -14,12 +13,12 @@ module.exports = function(videojs) {
     * @class QualitySelector
     * @extends videojs.Button
     */
-   QualitySelector = videojs.extend(MenuButton, {
+   class QualitySelector extends MenuButton {
 
       /**
        * @inheritdoc
        */
-      constructor: function(player, options) {
+      constructor(player, options) {
          MenuButton.call(this, player, options);
 
          // Update interface instantly so the user's change is acknowledged
@@ -50,14 +49,14 @@ module.exports = function(videojs) {
          }.bind(this));
 
          this.controlText('Open quality selector menu');
-      },
+      }
 
       /**
        * Updates the source that is selected in the menu
        *
        * @param source {object} player source to display as selected
        */
-      setSelectedSource: function(source) {
+      setSelectedSource(source) {
          var src = (source ? source.src : undefined);
 
          if (this.selectedSrc !== src) {
@@ -66,12 +65,12 @@ module.exports = function(videojs) {
                item.selected(item.source.src === src);
             });
          }
-      },
+      }
 
       /**
        * @inheritdoc
        */
-      createItems: function() {
+      createItems() {
          var player = this.player(),
              sources = player.currentSources();
 
@@ -85,16 +84,16 @@ module.exports = function(videojs) {
                selected: source.src === this.selectedSrc,
             });
          }.bind(this));
-      },
+      }
 
       /**
        * @inheritdoc
        */
-      buildWrapperCSSClass: function() {
+      buildWrapperCSSClass() {
          return 'vjs-quality-selector ' + MenuButton.prototype.buildWrapperCSSClass.call(this);
-      },
+      }
 
-   });
+   };
 
    videojs.registerComponent('QualitySelector', QualitySelector);
 
