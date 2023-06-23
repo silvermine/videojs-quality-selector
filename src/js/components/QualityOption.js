@@ -17,6 +17,7 @@ module.exports = function(videojs) {
        */
       constructor(player, options) {
          var source = options.source;
+
          if (!_.isObject(source)) {
             throw new Error('was not provided a "source" object, but rather: ' + (typeof source));
          }
@@ -25,6 +26,7 @@ module.exports = function(videojs) {
             selectable: true,
             label: source.label,
          }, options);
+
          super(player, options);
 
          this.source = source;
