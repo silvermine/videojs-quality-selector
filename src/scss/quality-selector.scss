@@ -12,7 +12,14 @@
       font-weight: normal;
       font-style: normal;
       &::before {
-         content: '\f110';
+         // The correct icon font character for Video.js 7 and below:
+         .video-js:not(.vjs-v8) & {
+            content: '\f110';
+         }
+         // Icon font character for Video.js 8:
+         .vjs-v8 & {
+            content: '\f114';
+         }
       }
    }
 }
