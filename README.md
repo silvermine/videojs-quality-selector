@@ -70,6 +70,17 @@ Remember to also add the CSS to your build. With most bundlers you can:
 require('@silvermine/videojs-quality-selector/dist/css/quality-selector.css')
 ```
 
+> [!WARNING]
+> This plugin's source code uses ES6+ syntax and keywords, such as `class` and `static`.
+> If you need to support [browsers that do not support newer JavaScript
+> syntax](https://caniuse.com/es6), you will need to use a tool like
+> [Babel](https://babeljs.io/) to transpile and polyfill your code.
+>
+> Alternatively, you can
+> `require('@silvermine/videojs-chromecast/dist/js/silvermine-videojs-quality-selector.js')`
+> to use a JavaScript file that has already been polyfilled/transpiled down to ES5
+> compatibility.
+
 ### Providing video sources
 
 Sources can be provided with either the `<source>` tag or via the `src` function on the
