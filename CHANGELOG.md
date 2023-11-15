@@ -1,7 +1,15 @@
-# Silvermine VideoJS Quality/Resolution Selector Change Log
+# Changelog
 
-In general, this project adheres to [Semantic Versioning](http://semver.org/). If for some
-reason we do something that's not strictly semantic, it will be clearly called out below.
+All notable changes to this project will be documented in this file.
+See [our coding standards][commit-messages] for commit guidelines.
+
+### [1.3.1](https://github.com/silvermine/videojs-quality-selector/compare/v1.3.0...v1.3.1) (2023-11-15)
+
+
+### Bug Fixes
+
+* use correct icon for Video.js 8 ([1209756](https://github.com/silvermine/videojs-quality-selector/commit/1209756616af52843f55ac53e2c7fbe29df63541))
+
 
 ## 1.2.3
 
