@@ -77,7 +77,7 @@ require('@silvermine/videojs-quality-selector/dist/css/quality-selector.css')
 > [Babel](https://babeljs.io/) to transpile and polyfill your code.
 >
 > Alternatively, you can
-> `require('@silvermine/videojs-chromecast/dist/js/silvermine-videojs-quality-selector.js')`
+> `require('@silvermine/videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.js')`
 > to use a JavaScript file that has already been polyfilled/transpiled down to ES5
 > compatibility.
 
