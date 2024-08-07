@@ -4,8 +4,11 @@
   "description": "video.js plugin for selecting a video quality or resolution",
   "main": "src/js/index.js",
   "scripts": {
-    "prepare": "grunt build",
-    "test": "check-node-version --npm 8.5.5 && nyc mocha -- 'tests/**/*.test.js'",
+    "prepare": "npm run build",
+    "check-node-version": "check-node-version --node $(cat .nvmrc) --npm 10.5.0 --print",
+    "test": "nyc mocha -- -R spec 'tests/**/*.test.js'",
+    "build": "grunt build",
+    "build:debug": "grunt build --debug",
     "commitlint": "commitlint --from ad805e8",
     "markdownlint": "markdownlint -c .markdownlint.json -i CHANGELOG.md '{,!(node_modules)/**/}*.md'",
     "eslint": "eslint '{,!(node_modules|dist)/**/}*.js'",
