@@ -5,34 +5,61 @@ on: [ push, pull_request ]
 jobs:
    build:
       runs-on: ubuntu-latest
+      outputs:
+         nvmrc: ${{ steps.makeNodeVersionOutput.outputs.nvmrc }}
       steps:
          -
-            uses: actions/checkout@v3
+            uses: actions/checkout@v4
             with:
                fetch-depth: 0 # Fetch all history
          -
-            uses: actions/setup-node@v3
+            uses: actions/setup-node@v4
             with:
                node-version-file: '.nvmrc'
-         - run: npm i -g npm@8.5.5
+         -
+            name: Put NVM version in output
+            id: makeNodeVersionOutput
+            run: echo "nvmrc=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
          - run: npm ci
+         - run: npm run check-node-version
          - run: npm run standards
+         - run: npm run build
+         -
+            name: Check for uncommitted changes # Done after dependency install and build to ensure code isn't compromised
+            run: if [ -n "$(git status --porcelain)" ]; then echo 'There are uncommitted changes.'; exit 1; fi
    test:
       needs: [ build ]
       runs-on: ubuntu-latest
       strategy:
          fail-fast: false
          matrix:
-            node-version: [ 14, 16, 'lts/*', 'latest' ]
+            node-version: [ 16, '${{ needs.build.outputs.nvmrc }}', 'lts/*', 'latest' ]
       steps:
-         - uses: actions/checkout@v3
+         -
+            uses: actions/checkout@v4
+            with:
+               fetch-depth: 0 # Fetch all history
          -
             name: Use Node.js ${{ matrix.node-version }}
-            uses: actions/setup-node@v3
+            uses: actions/setup-node@v4
             with:
                node-version: ${{ matrix.node-version }}
-         - run: npm i -g npm@8.5.5
          - run: npm ci # Reinstall the dependencies to ensure they install with the current version of node
+         - run: npm run standards
+         - run: npm run build # Ensure building is possible with this version of node
          - run: npm test
-         - name: Coveralls
-           uses: coverallsapp/github-action@v1
+         -
+            name: Coveralls
+            uses: coverallsapp/github-action@v2
+            with:
+               parallel: true
+               flag-name: ${{ matrix.node-version }}
+   finish:
+      needs: [ test ]
+      runs-on: ubuntu-latest
+      steps:
+         -
+            name: Close parallel build
+            uses: coverallsapp/github-action@v2
+            with:
+               parallel-finished: true
