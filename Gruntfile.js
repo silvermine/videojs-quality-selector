@@ -92,7 +92,10 @@ module.exports = function(grunt) {
                sourceMap: DEBUG,
                sourceMapIncludeSources: DEBUG,
                mangle: !DEBUG,
-               compress: !DEBUG,
+               // Disable the `merge_vars` option in the compression phase.
+               // `merge_vars` aggressively reuses variable names, which can lead to
+               // unexpected behavior or runtime errors in certain cases.
+               compress: DEBUG ? false : { merge_vars: false }, // eslint-disable-line camelcase
                beautify: DEBUG,
             },
          },
