@@ -48,7 +48,7 @@ module.exports = function(videojs) {
             this.update();
          }.bind(this));
 
-         this.controlText('Open quality selector menu');
+         this.controlText(this.localize('Open quality selector menu'));
       }
 
       /**
